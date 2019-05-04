@@ -1,0 +1,24 @@
+.file-box{
+    display: flex ;
+    background-color: rgba(255, 255, 255, 0) ;
+    padding-left :5px;
+    transition: 0.7s ;
+}
+
+.file-box .file-logo{
+    font-size: 13px ;
+    font-family: cursive ;
+    width :50px;
+}
+
+.file-box .file-name{
+    font-family: 'Courier New', Courier, monospace ;
+    color: white ;
+    font-weight: bold ;
+}
+
+.file-box:hover{
+    background-color: rgba(255, 255, 255, 0.233) ;
+    cursor: pointer;
+    transition: 0.7s ;
+}

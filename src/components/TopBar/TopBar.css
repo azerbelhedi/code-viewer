@@ -1,0 +1,35 @@
+*{
+    margin :0;
+    padding :0;
+}
+
+.top-bar{
+    background-color: rgb(35, 35, 36) ;
+    height :5vh;
+    width :100vw;
+}
+
+.top-bar input{
+    background-color: rgb(51, 51, 51) ;
+    border :none;
+    height :3vh;
+    margin-top :7px;
+    margin-left :20px;
+    width :70vw;
+    padding-left :20px;
+    color :white;
+}
+
+.top-bar button{
+    border :none;
+    height :3vh;
+    background-color: rgb(68, 68, 68) ;
+    font-weight: bold ;
+    width :10vw;
+    margin-left :10px;
+    color :white;
+}
+
+.top-bar button:hover{
+    cursor: pointer;
+}

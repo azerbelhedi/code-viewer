@@ -1,0 +1,15 @@
+.tree{
+    background-color: rgb(54, 54, 54) ;
+    width :18vw;
+    height : 95vh ;
+    position: fixed;
+    top : 5vh ;
+    left :0;
+    color :white;
+}
+
+.tree h5{
+    font-family: 'Courier New', Courier, monospace ;
+    font-weight: bold ;
+    font-size: 15px
+}
