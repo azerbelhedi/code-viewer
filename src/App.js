@@ -2,6 +2,8 @@ import React , { Component } from 'react'
 
 import TopBar from './components/TopBar/TopBar' 
 import Tree from './components/Tree/Tree'
+import CodeHead from './components/CodeHead/CodeHead'
+import FileContent from './components/FileContent/FileContent'
 
 class App extends Component{
     constructor(props){
@@ -10,12 +12,14 @@ class App extends Component{
             link : "" ,
             user : "" ,
             repo : "" ,
-            tree : []
+            tree : [] ,
+            pathToDisplay : ""
         }
 
         this.savelink = this.savelink.bind(this)
         this.linkToData = this.linkToData.bind(this) 
         this.getTree = this.getTree.bind(this)
+        this.displayCode = this.displayCode.bind(this)
     }
 
     linkToData(link){
@@ -46,7 +50,7 @@ class App extends Component{
         let state = this.state ;
         state.tree = [] ;
         this.setState(state)
-        
+
         fetch(link)
         .then(response => response.json())
         .then(data => {console.log(data)
@@ -57,11 +61,33 @@ class App extends Component{
         })
     }
 
+
+    displayCode(path){
+        //console.log(`path to display : ${path}`)
+        let state = this.state 
+        state.pathToDisplay = path ;
+        this.setState(state)
+        console.log(this.state.pathToDisplay)
+    }
+    
     render(){
         return(
             <div className="app">
                 <TopBar function = {this.savelink}/>
-                <Tree data = {{user : this.state.user , repo : this.state.repo , tree : this.state.tree}}/>
+                <Tree 
+                    data = {{user : this.state.user , repo : this.state.repo , tree : this.state.tree}} 
+                    displayCode = {this.displayCode}
+                />
+                <CodeHead data = {{
+                    path : this.state.pathToDisplay , 
+                    user : this.state.user ,
+                    repo : this.state.repo
+                    }}/>
+                    <FileContent data = {{
+                        path : this.state.pathToDisplay ,
+                        repo : this.state.repo ,
+                        user : this.state.user 
+                        }}/>
             </div>
         )
     }

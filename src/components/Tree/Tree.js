@@ -61,7 +61,9 @@ class Tree extends Component{
         let treeToRender = [] 
         this.props.data.tree.map(file => {
             if(file.type === "dir"){
-                treeToRender.push(<DirectoryBox data = {{
+                treeToRender.push(<DirectoryBox 
+                displayCode = {this.props.displayCode}
+                data = {{
                     name : file.name ,
                     repo : this.props.data.repo ,
                     user : this.props.data.user ,
@@ -72,7 +74,10 @@ class Tree extends Component{
         })
         this.props.data.tree.map(file => {
             if(file.type === "file"){
-                treeToRender.push(<FileBox data = {this.fileLogo(file.name)} extraData = {{path : `/${file.name}`}} />)
+                treeToRender.push(<FileBox 
+                    data = {this.fileLogo(file.name)} extraData = {{path : `/${file.name}`}} 
+                    displayCode = {this.props.displayCode}
+                />)
             }
         })
         return(

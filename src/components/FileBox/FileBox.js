@@ -25,8 +25,11 @@ class FileBox extends Component{
     }
 
     playCode(e){
+        /*
         console.log("path please")
         console.log(this.props.extraData.path)
+        */
+       this.props.displayCode(this.props.extraData.path)
     }
 
     render(){

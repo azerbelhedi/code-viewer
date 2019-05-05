@@ -102,18 +102,23 @@ class DirectoryBox extends Component{
                     {this.state.tree.map( file => {
                         if(file.type === "file"){
                             return(
-                                <FileBox data = {this.fileLogo(file.name)} extraData = {{path : `${this.props.data.path}/${file.name}`}} />
+                                <FileBox 
+                                    displayCode = {this.props.displayCode}
+                                    data = {this.fileLogo(file.name)} extraData = {{path : `${this.props.data.path}/${file.name}`}} />
                             )
                         }
                         else{
                             return (
-                            <DirectoryBox data = {{
-                                name : file.name ,
-                                repo : this.props.data.repo ,
-                                user : this.props.data.user ,
-                                path : `${this.props.data.path}/${file.name}` ,
-                                level : this.props.data.level + 1
-                            }}/>
+                            <DirectoryBox 
+                                displayCode = {this.props.displayCode}
+                                data = {{
+                                    name : file.name ,
+                                    repo : this.props.data.repo ,
+                                    user : this.props.data.user ,
+                                    path : `${this.props.data.path}/${file.name}` ,
+                                    level : this.props.data.level + 1
+                                }}
+                            />
                         )
                         }
                     })}

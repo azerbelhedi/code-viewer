@@ -1,0 +1,20 @@
+.code-head{
+    position: fixed ;
+    top :5vh;
+    right :0;
+    width :82vw;
+    height :5vh;
+    background-color: #131313 ;
+    color :white;
+    font-weight: bold ;
+    font-family: cursive;
+}
+
+.code-head h1{
+    font-size: 20px ;
+    padding-left :30px;
+}
+
+.code-head .files{
+    color :grey;
+}

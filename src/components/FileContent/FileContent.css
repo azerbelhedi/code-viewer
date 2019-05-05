@@ -1,0 +1,8 @@
+.file-content{
+    position: fixed ;
+    top :10vh;
+    right :0;
+    height :90vh;
+    width :82vw; 
+    background-color: #2a2727 ;
+}
