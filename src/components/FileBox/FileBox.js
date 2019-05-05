@@ -21,11 +21,17 @@ class LanguageLogo extends Component{
 class FileBox extends Component{
     constructor(props){
         super(props)
+        this.playCode = this.playCode.bind(this)
+    }
+
+    playCode(e){
+        console.log("path please")
+        console.log(this.props.extraData.path)
     }
 
     render(){
         return(
-            <div className="file-box">
+            <div className="file-box" onClick = {(e) => {this.playCode(e)}}>
                 <div className="file-logo">
                     <LanguageLogo data = {{ex : this.props.data.ex , color : this.props.data.color}}/>
                 </div>

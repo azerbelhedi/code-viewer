@@ -65,7 +65,7 @@ class DirectoryBox extends Component{
 
     getTree(){
         let endPoint = "https://api.github.com/repos/" ;
-        let link = `${endPoint}${this.props.data.user}/${this.props.data.repo}/contents/${this.props.data.path}${this.props.data.name}` 
+        let link = `${endPoint}${this.props.data.user}/${this.props.data.repo}/contents/${this.props.data.path}` 
         console.log(link)
 
         let state = this.state ;
@@ -102,7 +102,7 @@ class DirectoryBox extends Component{
                     {this.state.tree.map( file => {
                         if(file.type === "file"){
                             return(
-                                <FileBox data = {this.fileLogo(file.name)} />
+                                <FileBox data = {this.fileLogo(file.name)} extraData = {{path : `${this.props.data.path}/${file.name}`}} />
                             )
                         }
                         else{
@@ -111,7 +111,7 @@ class DirectoryBox extends Component{
                                 name : file.name ,
                                 repo : this.props.data.repo ,
                                 user : this.props.data.user ,
-                                path : `${this.props.data.name}/${file.name}` ,
+                                path : `${this.props.data.path}/${file.name}` ,
                                 level : this.props.data.level + 1
                             }}/>
                         )

@@ -65,14 +65,14 @@ class Tree extends Component{
                     name : file.name ,
                     repo : this.props.data.repo ,
                     user : this.props.data.user ,
-                    path : `/` ,
+                    path : `/${file.name}` ,
                     level : 1
                     }}/>)
             }
         })
         this.props.data.tree.map(file => {
             if(file.type === "file"){
-                treeToRender.push(<FileBox data = {this.fileLogo(file.name)}/>)
+                treeToRender.push(<FileBox data = {this.fileLogo(file.name)} extraData = {{path : `/${file.name}`}} />)
             }
         })
         return(
