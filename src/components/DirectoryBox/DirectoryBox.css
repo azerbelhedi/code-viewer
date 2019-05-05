@@ -1,0 +1,35 @@
+.directory-head{
+    display :flex;
+    padding-left :5px;
+}
+
+.directory-box .directory-head .directory-logo img{
+    width :24px;
+    margin-right: 26px ;
+    padding-top: 3.5px ;
+}
+
+.directory-box .directory-head .directory-name{
+    font-size: 18px ;
+    font-family: cursive ;
+    font-weight: bold ;
+}
+
+
+.directory-head:hover{
+    background-color: rgba(255, 255, 255, 0.253) ;
+    cursor: pointer;
+    transition: 1s ;
+}
+
+.collapse{
+    opacity: 0 ;
+    height :0;
+    overflow: hidden;
+    transition: 2s ;
+}
+
+.expand{
+    opacity: 1 ;
+    transition: 2s ;
+}

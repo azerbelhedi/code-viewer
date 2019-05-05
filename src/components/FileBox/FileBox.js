@@ -30,7 +30,7 @@ class FileBox extends Component{
                     <LanguageLogo data = {{ex : this.props.data.ex , color : this.props.data.color}}/>
                 </div>
                 <div className="file-name">
-                    {this.props.data.name}
+                    <h3>{this.props.data.name}</h3>
                 </div>
             </div>
         )

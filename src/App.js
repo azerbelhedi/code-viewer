@@ -44,7 +44,9 @@ class App extends Component{
         let endPoint = "https://api.github.com/repos/" ;
         let link = `${endPoint}${this.state.user}/${this.state.repo}/contents` 
         let state = this.state ;
-
+        state.tree = [] ;
+        this.setState(state)
+        
         fetch(link)
         .then(response => response.json())
         .then(data => {console.log(data)

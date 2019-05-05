@@ -2,6 +2,7 @@ import React , { Component } from 'react'
 import './Tree.css'
 
 import FileBox from '../FileBox/FileBox' 
+import DirectoryBox from '../DirectoryBox/DirectoryBox'
 
 class Tree extends Component{
     constructor(props){
@@ -10,12 +11,13 @@ class Tree extends Component{
             tree : []
         }
         this.fileLogo = this.fileLogo.bind(this) 
+        // props contains user and repo !
     }
 
     fileLogo(fileName){
         // return { ex , color , name}
         let arr = fileName.split(".") 
-        let ex = arr[1]
+        let ex = arr[arr.length - 1 ]
         ex = ex.toUpperCase() ;
         let color ;
         switch(ex){
@@ -40,6 +42,11 @@ class Tree extends Component{
                 ex = "INFO"
             break
 
+            case "PNG" :
+                color = "grey"
+                ex = "PIC"
+            break
+
             default :
                 color = "white"
                 ex = "FILE"
@@ -51,21 +58,26 @@ class Tree extends Component{
     }
 
     render(){
+        let treeToRender = [] 
+        this.props.data.tree.map(file => {
+            if(file.type === "dir"){
+                treeToRender.push(<DirectoryBox data = {{
+                    name : file.name ,
+                    repo : this.props.data.repo ,
+                    user : this.props.data.user ,
+                    path : `/` ,
+                    level : 1
+                    }}/>)
+            }
+        })
+        this.props.data.tree.map(file => {
+            if(file.type === "file"){
+                treeToRender.push(<FileBox data = {this.fileLogo(file.name)}/>)
+            }
+        })
         return(
             <div className="tree">
-                <FileBox data = {this.fileLogo("main.js")} />
-                <FileBox data = {this.fileLogo("index.html")} />
-                <FileBox data = {this.fileLogo("style.css")} />
-                <FileBox data = {this.fileLogo("config.json")} />
-                <FileBox data = {this.fileLogo("azer.idk")} />
-                <FileBox data = {this.fileLogo("readme.md")} />
-
-                {this.props.data.tree.map(file => {
-                    console.log(file)
-                    return(
-                        <h4>{file.name}</h4>
-                    )
-                })}
+                {treeToRender}
             </div>
         )
     }

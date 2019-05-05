@@ -3,12 +3,14 @@
     background-color: rgba(255, 255, 255, 0) ;
     padding-left :5px;
     transition: 0.7s ;
+    padding-top :2px;
+    padding-bottom: 2px ;
 }
 
 .file-box .file-logo{
-    font-size: 13px ;
+    font-size: 12px ;
     font-family: cursive ;
-    width :50px;
+    width :40px !important;
 }
 
 .file-box .file-name{
@@ -17,8 +19,16 @@
     font-weight: bold ;
 }
 
+.file-box .file-name h3{
+    width :max-content;
+    font-size: 12px ;
+    padding-top :2.5px;
+}
+
 .file-box:hover{
     background-color: rgba(255, 255, 255, 0.233) ;
     cursor: pointer;
     transition: 0.7s ;
 }
+
+
