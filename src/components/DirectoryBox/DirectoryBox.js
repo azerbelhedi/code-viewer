@@ -66,7 +66,7 @@ class DirectoryBox extends Component{
     getTree(){
         let endPoint = "https://api.github.com/repos/" ;
         let link = `${endPoint}${this.props.data.user}/${this.props.data.repo}/contents/${this.props.data.path}` 
-        console.log(link)
+        //console.log(link)
 
         let state = this.state ;
         state.tree = [] ;
@@ -74,12 +74,12 @@ class DirectoryBox extends Component{
         
         fetch(link)
         .then(response => response.json())
-        .then(data => {console.log(data)
+        .then(data => {//console.log(data)
             data.map(file => {
                 state.tree.push(file)
             })
             this.setState(state)
-            console.log(this.state.tree)
+            //console.log(this.state.tree)
         })
     }
 

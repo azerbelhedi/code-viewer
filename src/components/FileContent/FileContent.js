@@ -11,32 +11,36 @@ class FileContent extends Component{
         this.fetchData = this.fetchData.bind(this)
     }
 
-    fetchData(){
-        let path = this.props.data.path 
+    fetchData(newPath){
+        //let path = this.props.path 
+        let path = newPath
         let repo = this.props.data.repo
         let user = this.props.data.user
         let endPoint = "https://api.github.com/repos/" ;
         let link = `${endPoint}${user}/${repo}/contents${path}` 
-        console.log(link)
+        //console.log(link)
         fetch(link)
         .then(Response => Response.json())
         .then(data => {
-            console.log(data.download_url)
+            //console.log(data.download_url)
+            let state = this.state 
+            state.content = data.download_url
+            this.setState(state)
         })
-        //console.log(path , repo , user) 
-        return("still no code")
+    }
+
+    componentWillReceiveProps(newProps){
+        console.log(newProps.path)
+        if(newProps.path != ""){
+            this.fetchData(newProps.path)
+        }
     }
 
     render(){
-        let code = "no code"
-        if(this.props.data.path){
-            code = this.fetchData()
-        }
-
         return(
             <div className="file-content">
                 <h1>this is code ;</h1>
-                {code}
+                {this.state.content}
             </div>
         )
     }

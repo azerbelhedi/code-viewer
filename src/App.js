@@ -53,7 +53,7 @@ class App extends Component{
 
         fetch(link)
         .then(response => response.json())
-        .then(data => {console.log(data)
+        .then(data => {//console.log(data)
             data.map(file => {
                 state.tree.push(file)
             })
@@ -67,7 +67,7 @@ class App extends Component{
         let state = this.state 
         state.pathToDisplay = path ;
         this.setState(state)
-        console.log(this.state.pathToDisplay)
+        //console.log(this.state.pathToDisplay)
     }
     
     render(){
@@ -87,7 +87,9 @@ class App extends Component{
                         path : this.state.pathToDisplay ,
                         repo : this.state.repo ,
                         user : this.state.user 
-                        }}/>
+                        }}
+                        path = {this.state.pathToDisplay}
+                        />
             </div>
         )
     }
