@@ -1,6 +1,39 @@
 import React , { Component } from 'react'
 import './FileContent.css'
 
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco , atelierEstuaryDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+
+class Code extends Component{
+    constructor(props){
+        super(props)
+        this.language = this.language.bind(this)
+    }
+
+    language(path){
+        path = path.split(".") 
+        let ex = path[path.length - 1]
+        if(ex === "js"){
+            ex = "javascript"
+        }
+        return ex
+    }
+
+    render(){
+        return(
+            <div className="code">
+                {/* 
+                <SyntaxHighlighter  language='javascript' style={atelierEstuaryDark}>
+                    {this.language(this.props.data.path)}
+                </SyntaxHighlighter>
+                */}
+                <SyntaxHighlighter language= {this.language(this.props.data.path)} style={atelierEstuaryDark}>{this.props.data.code}</SyntaxHighlighter>
+            </div>
+        )
+    }
+}
+
 class FileContent extends Component{
     constructor(props){
         super(props)
@@ -28,6 +61,7 @@ class FileContent extends Component{
             //console.log(data.download_url)
             let state = this.state 
             state.content = data.download_url
+            state.code = "loading ..."
             this.setState(state)
             this.xmlToContent(this.setCode)
         })
@@ -48,6 +82,7 @@ class FileContent extends Component{
 
     xmlToContent(setCode){
         // convert
+        setCode("loading...")
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -61,7 +96,7 @@ class FileContent extends Component{
     render(){
         return(
             <div className="file-content">
-                {this.state.code}
+                <Code data = {{code : this.state.code , path : this.props.data.path}}/>
             </div>
         )
     }

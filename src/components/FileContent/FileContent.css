@@ -4,5 +4,9 @@
     right :0;
     height :90vh;
     width :82vw; 
-    background-color: #2a2727 ;
+    background-color: #22221b ;
+}
+
+.file-content{
+    overflow: scroll ;
 }

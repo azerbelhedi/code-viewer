@@ -21,7 +21,7 @@ class TopBar extends Component{
     render(){
         return(
             <div className="top-bar">
-                <input placeholder = "repository's link" type="text" onChange = {(e) => {this.handleLinkChange(e)}}/>
+                <input placeholder = "paste repository's link here to review" type="text" onChange = {(e) => {this.handleLinkChange(e)}}/>
                 <button onClick = {
                     () => {
                         this.props.function(this.state.link) 
