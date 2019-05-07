@@ -6,9 +6,12 @@ class FileContent extends Component{
         super(props)
         this.state = {
             content : "empty" ,
-            path : ""
+            path : "" ,
+            code : ""
         }
         this.fetchData = this.fetchData.bind(this)
+        this.xmlToContent = this.xmlToContent.bind(this)
+        this.setCode = this.setCode.bind(this)
     }
 
     fetchData(newPath){
@@ -26,6 +29,7 @@ class FileContent extends Component{
             let state = this.state 
             state.content = data.download_url
             this.setState(state)
+            this.xmlToContent(this.setCode)
         })
     }
 
@@ -36,11 +40,28 @@ class FileContent extends Component{
         }
     }
 
+    setCode(code){
+        let state = this.state 
+        state.code = code 
+        this.setState(state)
+    }
+
+    xmlToContent(setCode){
+        // convert
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                setCode(this.responseText)
+            }
+        };
+        xhttp.open("GET", this.state.content, true);
+        xhttp.send();
+    }
+
     render(){
         return(
             <div className="file-content">
-                <h1>this is code ;</h1>
-                {this.state.content}
+                {this.state.code}
             </div>
         )
     }
