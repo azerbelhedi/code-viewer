@@ -6,11 +6,10 @@
 .directory-box .directory-head .directory-logo img{
     width :24px;
     margin-right: 26px ;
-    padding-top: 3.5px ;
 }
 
 .directory-box .directory-head .directory-name{
-    font-size: 18px ;
+    font-size: 14px ;
     font-family: cursive ;
     font-weight: bold ;
 }

@@ -2,12 +2,15 @@
     position: fixed ;
     top :5vh;
     right :0;
+    z-index: 5 ;
     width :82vw;
     height :5vh;
     background-color: #131313 ;
     color :white;
+    text-shadow: 1px 1px 5px black ;
     font-weight: bold ;
     font-family: cursive;
+    box-shadow: 1px 5px 10px black ;
 }
 
 .code-head h1{
